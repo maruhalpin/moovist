@@ -4,6 +4,9 @@
  */
 package pantallas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Maru
@@ -16,7 +19,13 @@ public class Presentacion extends javax.swing.JFrame {
     public Presentacion() {
         initComponents();
     }
-
+    
+/*    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("icono.png"));
+        return retValue;
+    }
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +42,7 @@ public class Presentacion extends javax.swing.JFrame {
         titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setName("presentacion"); // NOI18N
         setResizable(false);
         setSize(new java.awt.Dimension(1350, 720));
@@ -75,7 +85,7 @@ public class Presentacion extends javax.swing.JFrame {
         jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 610, 120, 30));
 
         titulo.setFont(new java.awt.Font("Cooper Black", 1, 48)); // NOI18N
-        titulo.setIcon(new javax.swing.ImageIcon("D:\\Proyectos\\moovist\\src\\main\\java\\resources\\presentacion.png")); // NOI18N
+        titulo.setIcon(new javax.swing.ImageIcon("D:\\Proyectos\\moovist\\src\\main\\resources\\presentacion.png")); // NOI18N
         titulo.setAlignmentY(0.0F);
         titulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 720));

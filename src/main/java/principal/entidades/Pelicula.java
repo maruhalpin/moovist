@@ -15,7 +15,7 @@ public class Pelicula {
     private LocalDate fechaVisualizacion;
     
     public Pelicula() {
-
+        
     }
 
     public String getNombrePelicula() {

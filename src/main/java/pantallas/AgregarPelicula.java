@@ -19,6 +19,7 @@ public class AgregarPelicula extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        mensaje = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         textoFecha = new javax.swing.JTextField();
         botonAtras = new javax.swing.JButton();
@@ -38,10 +39,13 @@ public class AgregarPelicula extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        mensaje.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 450, -1, -1));
+
         fecha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         fecha.setForeground(new java.awt.Color(0, 0, 0));
-        fecha.setText("Fecha");
-        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
+        fecha.setText("Fecha (dd/mm/yyyy)");
+        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
 
         textoFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,8 +87,8 @@ public class AgregarPelicula extends javax.swing.JFrame {
 
         anio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         anio.setForeground(new java.awt.Color(0, 0, 0));
-        anio.setText("Año:");
-        jPanel1.add(anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, -1, -1));
+        anio.setText("Año de creación");
+        jPanel1.add(anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, -1, -1));
 
         textoAnio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,24 +98,27 @@ public class AgregarPelicula extends javax.swing.JFrame {
         jPanel1.add(textoAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 470, 30));
 
         botonAgregar.setBackground(new java.awt.Color(0, 0, 0));
+        botonAgregar.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         botonAgregar.setForeground(new java.awt.Color(255, 255, 255));
         botonAgregar.setText("Agregar");
+        botonAgregar.setAlignmentY(0.0F);
         botonAgregar.setBorder(null);
         botonAgregar.setBorderPainted(false);
+        botonAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 420, 120, 50));
+        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 410, 110, 50));
 
         nombre.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         nombre.setForeground(new java.awt.Color(0, 0, 0));
-        nombre.setText("Nombre:");
-        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 140, 50));
+        nombre.setText("Nombre");
+        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 70, 50));
 
         jLabel1.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Proyectos\\moovist\\src\\main\\java\\resources\\agregarPelicula.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Proyectos\\moovist\\src\\main\\resources\\agregarPelicula.png")); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(1350, 720));
         jLabel1.setMinimumSize(new java.awt.Dimension(1350, 720));
         jLabel1.setPreferredSize(new java.awt.Dimension(1350, 720));
@@ -135,11 +142,36 @@ public class AgregarPelicula extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-        this.pelicula.setNombrePelicula(textoNombre.getText().toUpperCase().charAt(0) + textoNombre.getText().substring(1, textoNombre.getText().length()).toLowerCase());
-        this.pelicula.setAnioPelicula(Integer.parseInt(textoAnio.getText()));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.pelicula.setFechaVisualizacion(LocalDate.parse(textoFecha.getText(), formatter));
-        agregarPelicula(this.pelicula);
+        boolean valido=true;
+        if(textoNombre.getText().equals("")||textoAnio.getText().equals("")||textoFecha.getText().equals(""))    
+            this.mensaje.setText("Faltan parametros necesarios.");
+        else
+        {
+            this.pelicula.setNombrePelicula(textoNombre.getText().toUpperCase().charAt(0) + textoNombre.getText().substring(1, textoNombre.getText().length()).toLowerCase());
+            if(Integer.parseInt(textoAnio.getText())>LocalDate.now().getYear())
+            {
+                this.mensaje.setText("Bienvenido viajero del futuro. Ingrese un año valido.");
+                valido=false;
+            }
+            else
+                this.pelicula.setAnioPelicula(Integer.parseInt(textoAnio.getText()));
+            if(LocalDate.parse(textoFecha.getText(), formatter).equals(LocalDate.now())||LocalDate.parse(textoFecha.getText(), formatter).isBefore(LocalDate.now()))
+                this.pelicula.setFechaVisualizacion(LocalDate.parse(textoFecha.getText(), formatter));
+            else
+            {
+                this.mensaje.setText("Debe ingresar una fecha valida. No estamos en el futuro. ¿O si?");
+                valido=false;
+            }
+            if(valido)
+            {
+                agregarPelicula(this.pelicula);
+                this.mensaje.setText("Se ha agregado correctamente.");
+                textoNombre.setText(null);
+                textoAnio.setText(null);
+                textoFecha.setText(null);
+            }
+        }
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void textoAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoAnioActionPerformed
@@ -221,6 +253,7 @@ public class AgregarPelicula extends javax.swing.JFrame {
     private javax.swing.JLabel fecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel mensaje;
     private javax.swing.JLabel nombre;
     private javax.swing.JTextField textoAnio;
     private javax.swing.JTextField textoFecha;
