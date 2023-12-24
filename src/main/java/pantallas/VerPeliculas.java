@@ -22,10 +22,7 @@ public class VerPeliculas extends javax.swing.JFrame {
 
         panelVerPeliculas = new javax.swing.JPanel();
         labelTotalVistas = new javax.swing.JLabel();
-        labelVistasAnio = new javax.swing.JLabel();
-        totalPeliculas = new javax.swing.JLabel();
         botonSalir = new javax.swing.JButton();
-        ordenarPor = new javax.swing.JLabel();
         listado = new javax.swing.JScrollPane();
         visualizador = new javax.swing.JList<>();
         botonAtras = new javax.swing.JButton();
@@ -33,55 +30,75 @@ public class VerPeliculas extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1350, 720));
+        setMaximumSize(new java.awt.Dimension(1366, 768));
+        setMinimumSize(new java.awt.Dimension(1366, 768));
+        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
-        setSize(new java.awt.Dimension(1350, 720));
+        setSize(new java.awt.Dimension(1366, 768));
 
+        panelVerPeliculas.setMaximumSize(new java.awt.Dimension(1366, 768));
+        panelVerPeliculas.setMinimumSize(new java.awt.Dimension(1366, 768));
+        panelVerPeliculas.setPreferredSize(new java.awt.Dimension(1366, 768));
         panelVerPeliculas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelVerPeliculas.add(labelTotalVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, 120, 20));
-        panelVerPeliculas.add(labelVistasAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 120, 20));
 
-        totalPeliculas.setForeground(new java.awt.Color(0, 0, 0));
-        totalPeliculas.setText("Total de peliculas vistas");
-        panelVerPeliculas.add(totalPeliculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, -1, -1));
+        labelTotalVistas.setFont(new java.awt.Font("Nirmala UI", 1, 36)); // NOI18N
+        labelTotalVistas.setForeground(new java.awt.Color(1, 1, 1));
+        labelTotalVistas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTotalVistas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTotalVistas.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        panelVerPeliculas.add(labelTotalVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 150, 50));
 
+        botonSalir.setBackground(new java.awt.Color(1, 1, 1));
+        botonSalir.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        botonSalir.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir.setText("Salir");
+        botonSalir.setBorder(null);
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
             }
         });
-        panelVerPeliculas.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 640, -1, -1));
+        panelVerPeliculas.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 630, 120, 50));
 
-        ordenarPor.setForeground(new java.awt.Color(0, 0, 0));
-        ordenarPor.setText("Ordenar por:");
-        panelVerPeliculas.add(ordenarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
+        listado.setBorder(null);
+        listado.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
 
-        visualizador.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        visualizador.setBorder(null);
+        visualizador.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        visualizador.setSelectionBackground(new java.awt.Color(1, 1, 1));
         listado.setViewportView(visualizador);
 
-        panelVerPeliculas.add(listado, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 480, 600));
+        panelVerPeliculas.add(listado, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 510, 620));
 
+        botonAtras.setBackground(new java.awt.Color(1, 1, 1));
+        botonAtras.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        botonAtras.setForeground(new java.awt.Color(255, 255, 255));
         botonAtras.setText("Atras");
+        botonAtras.setMaximumSize(new java.awt.Dimension(30, 20));
+        botonAtras.setMinimumSize(new java.awt.Dimension(30, 20));
+        botonAtras.setPreferredSize(new java.awt.Dimension(30, 20));
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAtrasActionPerformed(evt);
             }
         });
-        panelVerPeliculas.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 630, -1, -1));
+        panelVerPeliculas.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, 120, 50));
 
+        dropdownOrdenamiento.setBackground(new java.awt.Color(0, 0, 0));
+        dropdownOrdenamiento.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        dropdownOrdenamiento.setForeground(new java.awt.Color(255, 255, 255));
         dropdownOrdenamiento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Fecha visualizacion", "Año", "Nombre" }));
+        dropdownOrdenamiento.setBorder(null);
         dropdownOrdenamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dropdownOrdenamientoActionPerformed(evt);
             }
         });
-        panelVerPeliculas.add(dropdownOrdenamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
+        panelVerPeliculas.add(dropdownOrdenamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 100, 170, -1));
 
         fondo.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/verPeliculas.png"))); // NOI18N
-        fondo.setPreferredSize(new java.awt.Dimension(1350, 720));
-        panelVerPeliculas.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 710));
+        panelVerPeliculas.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,11 +223,8 @@ public class VerPeliculas extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> dropdownOrdenamiento;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel labelTotalVistas;
-    private javax.swing.JLabel labelVistasAnio;
     private javax.swing.JScrollPane listado;
-    private javax.swing.JLabel ordenarPor;
     private javax.swing.JPanel panelVerPeliculas;
-    private javax.swing.JLabel totalPeliculas;
     private javax.swing.JList<String> visualizador;
     // End of variables declaration//GEN-END:variables
 }

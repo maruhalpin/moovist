@@ -43,13 +43,17 @@ public class Presentacion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setMaximumSize(new java.awt.Dimension(1366, 768));
+        setMinimumSize(new java.awt.Dimension(1366, 768));
         setName("presentacion"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
-        setSize(new java.awt.Dimension(1350, 720));
+        setSize(new java.awt.Dimension(1366, 768));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonAgregar.setBackground(new java.awt.Color(0, 0, 0));
+        botonAgregar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         botonAgregar.setForeground(new java.awt.Color(255, 255, 255));
         botonAgregar.setText("Agregar pelicula");
         botonAgregar.setBorder(null);
@@ -63,32 +67,38 @@ public class Presentacion extends javax.swing.JFrame {
         jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, 230, 50));
 
         botonVer.setBackground(new java.awt.Color(0, 0, 0));
+        botonVer.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        botonVer.setForeground(new java.awt.Color(255, 255, 255));
         botonVer.setText("Ver peliculas");
         botonVer.setBorder(null);
         botonVer.setBorderPainted(false);
+        botonVer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVerActionPerformed(evt);
             }
         });
-        jPanel1.add(botonVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, 220, 50));
+        jPanel1.add(botonVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 230, 50));
 
         botonSalir.setBackground(new java.awt.Color(0, 0, 0));
+        botonSalir.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        botonSalir.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir.setText("Salir");
         botonSalir.setBorder(null);
         botonSalir.setBorderPainted(false);
+        botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 610, 120, 30));
+        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 650, 120, 50));
 
         titulo.setFont(new java.awt.Font("Cooper Black", 1, 48)); // NOI18N
         titulo.setIcon(new javax.swing.ImageIcon("D:\\Proyectos\\moovist\\src\\main\\resources\\presentacion.png")); // NOI18N
         titulo.setAlignmentY(0.0F);
         titulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 720));
+        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

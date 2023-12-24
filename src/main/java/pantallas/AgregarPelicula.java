@@ -18,124 +18,106 @@ public class AgregarPelicula extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelAgregarPelicula = new javax.swing.JPanel();
         mensaje = new javax.swing.JLabel();
-        fecha = new javax.swing.JLabel();
         textoFecha = new javax.swing.JTextField();
         botonAtras = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         textoNombre = new javax.swing.JTextField();
-        anio = new javax.swing.JLabel();
         textoAnio = new javax.swing.JTextField();
         botonAgregar = new javax.swing.JButton();
-        nombre = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1350, 720));
-        setPreferredSize(new java.awt.Dimension(1350, 720));
+        setMaximumSize(new java.awt.Dimension(1366, 768));
+        setMinimumSize(new java.awt.Dimension(1366, 768));
+        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
-        setSize(new java.awt.Dimension(1350, 720));
+        setSize(new java.awt.Dimension(1366, 768));
+        getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelAgregarPelicula.setMaximumSize(new java.awt.Dimension(1366, 768));
+        panelAgregarPelicula.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        mensaje.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         mensaje.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 450, -1, -1));
-
-        fecha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        fecha.setForeground(new java.awt.Color(0, 0, 0));
-        fecha.setText("Fecha (dd/mm/yyyy)");
-        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
+        panelAgregarPelicula.add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 430, 50));
 
         textoFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoFechaActionPerformed(evt);
             }
         });
-        jPanel1.add(textoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 470, 30));
+        panelAgregarPelicula.add(textoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 490, 30));
 
         botonAtras.setBackground(new java.awt.Color(0, 0, 0));
+        botonAtras.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         botonAtras.setForeground(new java.awt.Color(255, 255, 255));
         botonAtras.setText("Atras");
         botonAtras.setBorder(null);
         botonAtras.setBorderPainted(false);
+        botonAtras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonAtras.setMaximumSize(new java.awt.Dimension(30, 20));
+        botonAtras.setMinimumSize(new java.awt.Dimension(30, 20));
+        botonAtras.setPreferredSize(new java.awt.Dimension(30, 20));
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAtrasActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, 110, 50));
+        panelAgregarPelicula.add(botonAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, 120, 50));
 
         botonSalir.setBackground(new java.awt.Color(0, 0, 0));
+        botonSalir.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         botonSalir.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir.setText("Salir");
         botonSalir.setBorder(null);
         botonSalir.setBorderPainted(false);
+        botonSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 610, 110, 50));
+        panelAgregarPelicula.add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 630, 120, 50));
 
         textoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(textoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, 470, 30));
-
-        anio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        anio.setForeground(new java.awt.Color(0, 0, 0));
-        anio.setText("Año de creación");
-        jPanel1.add(anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, -1, -1));
+        panelAgregarPelicula.add(textoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 490, 30));
 
         textoAnio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoAnioActionPerformed(evt);
             }
         });
-        jPanel1.add(textoAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 470, 30));
+        panelAgregarPelicula.add(textoAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 490, 30));
 
         botonAgregar.setBackground(new java.awt.Color(0, 0, 0));
-        botonAgregar.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        botonAgregar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         botonAgregar.setForeground(new java.awt.Color(255, 255, 255));
         botonAgregar.setText("Agregar");
         botonAgregar.setAlignmentY(0.0F);
         botonAgregar.setBorder(null);
         botonAgregar.setBorderPainted(false);
         botonAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonAgregar.setMaximumSize(new java.awt.Dimension(85, 20));
+        botonAgregar.setMinimumSize(new java.awt.Dimension(85, 20));
+        botonAgregar.setPreferredSize(new java.awt.Dimension(85, 20));
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 410, 110, 50));
+        panelAgregarPelicula.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 510, 230, 50));
 
-        nombre.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        nombre.setForeground(new java.awt.Color(0, 0, 0));
-        nombre.setText("Nombre");
-        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 70, 50));
+        fondo.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon("D:\\Proyectos\\moovist\\src\\main\\resources\\agregarPelicula.png")); // NOI18N
+        panelAgregarPelicula.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Proyectos\\moovist\\src\\main\\resources\\agregarPelicula.png")); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(1350, 720));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1350, 720));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1350, 720));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 700));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(panelAgregarPelicula);
 
         pack();
         setLocationRelativeTo(null);
@@ -246,15 +228,12 @@ public class AgregarPelicula extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel anio;
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAtras;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JLabel fecha;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel fondo;
     private javax.swing.JLabel mensaje;
-    private javax.swing.JLabel nombre;
+    private javax.swing.JPanel panelAgregarPelicula;
     private javax.swing.JTextField textoAnio;
     private javax.swing.JTextField textoFecha;
     private javax.swing.JTextField textoNombre;
