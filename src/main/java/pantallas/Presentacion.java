@@ -46,7 +46,6 @@ public class Presentacion extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setName("presentacion"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
 
