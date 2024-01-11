@@ -276,7 +276,7 @@ public class VerPeliculas extends javax.swing.JFrame {
         String pelicula = visualizador.getSelectedValue();
         Pelicula peliculaClase = stringToPelicula(pelicula);
         try {
-            Runtime.getRuntime().exec("C:\\Windows\\System32\\cmd.exe /K start www.google.com/search?q=" + peliculaClase.getNombrePelicula());
+            Runtime.getRuntime().exec("C:\\Windows\\System32\\cmd.exe /K start www.google.com/search?q=" + peliculaClase.getNombrePelicula().replace(" ", "+"));
         } catch (IOException ex) {
             Logger.getLogger(VerPeliculas.class.getName()).log(Level.SEVERE, "No se pudo googlear.", ex);
         }
