@@ -31,7 +31,6 @@ public class AgregarPelicula extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
@@ -114,7 +113,7 @@ public class AgregarPelicula extends javax.swing.JFrame {
         panelAgregarPelicula.add(botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 510, 230, 50));
 
         fondo.setFont(new java.awt.Font("Cooper Black", 0, 24)); // NOI18N
-        fondo.setIcon(new javax.swing.ImageIcon("D:\\Proyectos\\moovist\\src\\main\\resources\\agregarPelicula.png")); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/agregarPelicula.png"))); // NOI18N
         panelAgregarPelicula.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(panelAgregarPelicula);
@@ -130,7 +129,7 @@ public class AgregarPelicula extends javax.swing.JFrame {
             this.mensaje.setText("Faltan parametros necesarios.");
         else
         {
-            this.pelicula.setNombrePelicula(textoNombre.getText().toUpperCase().charAt(0) + textoNombre.getText().substring(1, textoNombre.getText().length()).toLowerCase());
+            this.pelicula.setNombrePelicula(textoNombre.getText().trim());
             if(Integer.parseInt(textoAnio.getText())>LocalDate.now().getYear())
             {
                 this.mensaje.setText("Bienvenido viajero del futuro. Ingrese un año valido.");
@@ -178,7 +177,7 @@ public class AgregarPelicula extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_textoFechaActionPerformed
 
-    private void agregarPelicula(Pelicula pelicula) {
+    public void agregarPelicula(Pelicula pelicula) {
         try {
             
             String[] nuevaPelicula = {pelicula.getNombrePelicula(),pelicula.getAnioPelicula(),pelicula.getFechaVisualizacion().toString()};
