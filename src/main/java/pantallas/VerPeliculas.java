@@ -1,8 +1,16 @@
 package pantallas;
 
+import com.opencsv.CSVWriter;
 import com.opencsv.bean.CsvToBeanBuilder;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import principal.Comparators.PeliculasComparator;
 import principal.entidades.Pelicula;
@@ -22,6 +30,9 @@ public class VerPeliculas extends javax.swing.JFrame {
 
         panelVerPeliculas = new javax.swing.JPanel();
         labelTotalVistas = new javax.swing.JLabel();
+        botonEliminar = new javax.swing.JButton();
+        botonEditar = new javax.swing.JButton();
+        botonGooglear = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         listado = new javax.swing.JScrollPane();
         visualizador = new javax.swing.JList<>();
@@ -32,7 +43,6 @@ public class VerPeliculas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         setSize(new java.awt.Dimension(1366, 768));
 
@@ -47,6 +57,44 @@ public class VerPeliculas extends javax.swing.JFrame {
         labelTotalVistas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         labelTotalVistas.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         panelVerPeliculas.add(labelTotalVistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 150, 50));
+
+        botonEliminar.setBackground(new java.awt.Color(1, 1, 1));
+        botonEliminar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        botonEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        botonEliminar.setText("Eliminar");
+        botonEliminar.setBorder(null);
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+        panelVerPeliculas.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 360, 110, 40));
+
+        botonEditar.setBackground(new java.awt.Color(1, 1, 1));
+        botonEditar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        botonEditar.setForeground(new java.awt.Color(255, 255, 255));
+        botonEditar.setText("Editar");
+        botonEditar.setBorder(null);
+        botonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarActionPerformed(evt);
+            }
+        });
+        panelVerPeliculas.add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 260, 110, 40));
+
+        botonGooglear.setBackground(new java.awt.Color(1, 1, 1));
+        botonGooglear.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        botonGooglear.setForeground(new java.awt.Color(255, 255, 255));
+        botonGooglear.setText("Googlear");
+        botonGooglear.setActionCommand("Eliminar");
+        botonGooglear.setBorder(null);
+        botonGooglear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGooglearActionPerformed(evt);
+            }
+        });
+        panelVerPeliculas.add(botonGooglear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 310, 110, 40));
+        botonGooglear.getAccessibleContext().setAccessibleName("Eliminar");
 
         botonSalir.setBackground(new java.awt.Color(1, 1, 1));
         botonSalir.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -118,6 +166,17 @@ public class VerPeliculas extends javax.swing.JFrame {
     public int getCantidadTotal() {
         return cantidadTotal;
     }
+    
+    public Pelicula stringToPelicula(String elemento){
+        String[] e1 = elemento.split(": ",2);
+        String[] e2 = e1[1].split(" \\(");
+        String anio = e2[1].replace(")", "");
+        Pelicula pelicula = new Pelicula();
+        pelicula.setNombrePelicula(e2[0]);
+        pelicula.setAnioPelicula(Integer.parseInt(anio));
+        pelicula.setFechaVisualizacion(LocalDate.parse(e1[0]));
+        return pelicula;
+    }
 
     public void setCantidadTotal(int cantidadTotal) {
         this.cantidadTotal = cantidadTotal;
@@ -160,7 +219,7 @@ public class VerPeliculas extends javax.swing.JFrame {
             }
         } 
         catch (Exception e) {
-            System.out.println("No se pudo generar el listado. Por favor contecte a Maru.");
+            System.out.println("No se pudo generar el listado. Por favor contacte a Maru.");
         }
         
         return lista;
@@ -181,6 +240,54 @@ public class VerPeliculas extends javax.swing.JFrame {
         visualizador.setModel(this.listadoPeliculas(ordenamiento));
         
     }//GEN-LAST:event_dropdownOrdenamientoActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        /*
+        String pelicula = visualizador.getSelectedValue();
+        Pelicula peliculaClase = stringToPelicula(pelicula);
+        List<Pelicula> peliculas = new ArrayList();
+        try {
+            peliculas = new CsvToBeanBuilder(new FileReader("moovist.csv")).withType(Pelicula.class).build().parse();
+            peliculas.remove(peliculaClase);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(VerPeliculas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int i = 0;
+        while(i<peliculas.size())
+        {
+            String[] nuevaPelicula = {peliculas.get(i).getNombrePelicula(),peliculas.get(i).getAnioPelicula(),peliculas.get(i).getFechaVisualizacion().toString()};
+
+            String archCSV = "moovist.csv";
+            
+            try {
+                CSVWriter writer = new CSVWriter(new FileWriter(archCSV));
+                writer.writeNext(nuevaPelicula);
+                writer.close();
+            } catch (IOException ex) {
+                Logger.getLogger(VerPeliculas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            i++;
+        }
+        */
+        //TODO
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void botonGooglearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGooglearActionPerformed
+        String pelicula = visualizador.getSelectedValue();
+        Pelicula peliculaClase = stringToPelicula(pelicula);
+        try {
+            Runtime.getRuntime().exec("C:\\Windows\\System32\\cmd.exe /K start www.google.com/search?q=" + peliculaClase.getNombrePelicula());
+        } catch (IOException ex) {
+            Logger.getLogger(VerPeliculas.class.getName()).log(Level.SEVERE, "No se pudo googlear.", ex);
+        }
+        
+
+    }//GEN-LAST:event_botonGooglearActionPerformed
+
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+        String pelicula = visualizador.getSelectedValue();
+        Pelicula peliculaClase = stringToPelicula(pelicula);
+    }//GEN-LAST:event_botonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,6 +326,9 @@ public class VerPeliculas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonEditar;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonGooglear;
     private javax.swing.JButton botonSalir;
     private javax.swing.JComboBox<String> dropdownOrdenamiento;
     private javax.swing.JLabel fondo;

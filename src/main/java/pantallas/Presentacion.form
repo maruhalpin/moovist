@@ -142,7 +142,7 @@
               <Font name="Cooper Black" size="48" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\Proyectos\moovist\src\main\resources\presentacion.png"/>
+              <Image iconType="3" name="/presentacion.png"/>
             </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

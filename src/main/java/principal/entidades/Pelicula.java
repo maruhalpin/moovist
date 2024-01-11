@@ -34,7 +34,6 @@ public class Pelicula {
         return this.anioPelicula;
     }
 
-
     public void setAnioPelicula(int anio) {
         this.anioPelicula = anio;
     } 
@@ -46,5 +45,7 @@ public class Pelicula {
     public LocalDate getFechaVisualizacion() {
         return fechaVisualizacion;
     }
+    
+
     
 }
