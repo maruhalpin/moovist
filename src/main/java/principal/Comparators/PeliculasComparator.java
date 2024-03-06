@@ -1,4 +1,4 @@
-package principal.Comparators;
+package principal.comparators;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;

@@ -4,6 +4,7 @@ import com.opencsv.CSVWriter;
 import java.io.FileWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.ImageIcon;
 import principal.entidades.Pelicula;
 
 public class AgregarPelicula extends javax.swing.JFrame {
@@ -12,15 +13,21 @@ public class AgregarPelicula extends javax.swing.JFrame {
     public AgregarPelicula() {
         initComponents();
         this.pelicula = new Pelicula();
+        //setIconImage(new ImageIcon(getClass().getResource("/resources/icono.png")).getImage());
     }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        choice1 = new java.awt.Choice();
         panelAgregarPelicula = new javax.swing.JPanel();
         mensaje = new javax.swing.JLabel();
         textoFecha = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        textoFecha1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        textoFecha2 = new javax.swing.JTextField();
         botonAtras = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         textoNombre = new javax.swing.JTextField();
@@ -47,7 +54,48 @@ public class AgregarPelicula extends javax.swing.JFrame {
                 textoFechaActionPerformed(evt);
             }
         });
-        panelAgregarPelicula.add(textoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 490, 30));
+        textoFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoFechaKeyTyped(evt);
+            }
+        });
+        panelAgregarPelicula.add(textoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 70, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("/");
+        panelAgregarPelicula.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, 10, 30));
+
+        textoFecha1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoFecha1ActionPerformed(evt);
+            }
+        });
+        textoFecha1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoFecha1KeyTyped(evt);
+            }
+        });
+        panelAgregarPelicula.add(textoFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, 50, 30));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("/");
+        panelAgregarPelicula.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 10, 30));
+
+        textoFecha2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoFecha2ActionPerformed(evt);
+            }
+        });
+        textoFecha2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoFecha2KeyTyped(evt);
+            }
+        });
+        panelAgregarPelicula.add(textoFecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, 50, 30));
 
         botonAtras.setBackground(new java.awt.Color(0, 0, 0));
         botonAtras.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -92,7 +140,12 @@ public class AgregarPelicula extends javax.swing.JFrame {
                 textoAnioActionPerformed(evt);
             }
         });
-        panelAgregarPelicula.add(textoAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 490, 30));
+        textoAnio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textoAnioKeyTyped(evt);
+            }
+        });
+        panelAgregarPelicula.add(textoAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 190, 30));
 
         botonAgregar.setBackground(new java.awt.Color(0, 0, 0));
         botonAgregar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -125,7 +178,8 @@ public class AgregarPelicula extends javax.swing.JFrame {
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         boolean valido=true;
-        if(textoNombre.getText().equals("")||textoAnio.getText().equals("")||textoFecha.getText().equals(""))    
+        String fecha = textoFecha1.getText()+"/"+textoFecha2.getText()+"/"+textoFecha.getText();
+        if(textoNombre.getText().equals("")||textoAnio.getText().equals("")||textoFecha.getText().equals("")||textoFecha1.getText().equals("")||textoFecha2.getText().equals(""))    
             this.mensaje.setText("Faltan parametros necesarios.");
         else
         {
@@ -137,8 +191,8 @@ public class AgregarPelicula extends javax.swing.JFrame {
             }
             else
                 this.pelicula.setAnioPelicula(Integer.parseInt(textoAnio.getText()));
-            if(LocalDate.parse(textoFecha.getText(), formatter).equals(LocalDate.now())||LocalDate.parse(textoFecha.getText(), formatter).isBefore(LocalDate.now()))
-                this.pelicula.setFechaVisualizacion(LocalDate.parse(textoFecha.getText(), formatter));
+            if(LocalDate.parse(fecha, formatter).equals(LocalDate.now()) || LocalDate.parse(fecha, formatter).isBefore(LocalDate.now()))
+                this.pelicula.setFechaVisualizacion(LocalDate.parse(fecha, formatter));
             else
             {
                 this.mensaje.setText("Debe ingresar una fecha valida. No estamos en el futuro. ¿O si?");
@@ -151,6 +205,8 @@ public class AgregarPelicula extends javax.swing.JFrame {
                 textoNombre.setText(null);
                 textoAnio.setText(null);
                 textoFecha.setText(null);
+                textoFecha1.setText(null);
+                textoFecha2.setText(null);
             }
         }
     }//GEN-LAST:event_botonAgregarActionPerformed
@@ -176,6 +232,42 @@ public class AgregarPelicula extends javax.swing.JFrame {
     private void textoFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoFechaActionPerformed
                 
     }//GEN-LAST:event_textoFechaActionPerformed
+
+    private void textoFecha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoFecha1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoFecha1ActionPerformed
+
+    private void textoFecha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoFecha2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoFecha2ActionPerformed
+
+    private void textoFecha1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoFecha1KeyTyped
+        if(textoFecha1.getText().length() >= 2)
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textoFecha1KeyTyped
+
+    private void textoFecha2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoFecha2KeyTyped
+        if(textoFecha2.getText().length() >= 2)
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textoFecha2KeyTyped
+
+    private void textoFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoFechaKeyTyped
+        if(textoFecha.getText().length() >= 4)
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textoFechaKeyTyped
+
+    private void textoAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoAnioKeyTyped
+        if(textoAnio.getText().length() >= 4)
+        {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textoAnioKeyTyped
 
     public void agregarPelicula(Pelicula pelicula) {
         try {
@@ -230,11 +322,16 @@ public class AgregarPelicula extends javax.swing.JFrame {
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAtras;
     private javax.swing.JButton botonSalir;
+    private java.awt.Choice choice1;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel mensaje;
     private javax.swing.JPanel panelAgregarPelicula;
     private javax.swing.JTextField textoAnio;
     private javax.swing.JTextField textoFecha;
+    private javax.swing.JTextField textoFecha1;
+    private javax.swing.JTextField textoFecha2;
     private javax.swing.JTextField textoNombre;
     // End of variables declaration//GEN-END:variables
 
